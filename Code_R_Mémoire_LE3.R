@@ -25,17 +25,15 @@ View(df_num)
 
 
 # Moyenne et écart-type, format lignes
-stats <- bind_rows(
-  summarise(df_num, across(everything(), ~mean(.x, na.rm = TRUE))) %>% mutate(Statistique = "Moyenne"),
-  summarise(df_num, across(everything(), ~sd(.x, na.rm = TRUE))) %>% mutate(Statistique = "Ecart-type")
-)
+stats <- bind_rows(summarise(df_num, across(everything(), ~mean(.x, na.rm = TRUE))) %>% mutate(Statistique = "Moyenne"),
+  summarise(df_num, across(everything(), ~sd(.x, na.rm = TRUE))) %>% mutate(Statistique = "Ecart-type"))
 
-# Réorganiser : Statistique en première colonne
+# Réorganisation 
 stats <- stats %>% select(Statistique, everything())
 
 View(stats)
 
-# Corrélation entre deux variables (ici la 1ère et la 2ème colonne numériques)
+# Test de corrélation
 cor.test(df$Q1_CF, df$selfconfidence, use = "complete.obs")
 cor.test(df$Q1_BFNI, df$selfconfidence, use = "complete.obs")
 cor.test(df$Q1_CF_nudge, df$selfconfidence, use = "complete.obs")
