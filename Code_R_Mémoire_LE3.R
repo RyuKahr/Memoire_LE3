@@ -7,7 +7,7 @@ library(dplyr)
 df <- read_excel("Base de données.xlsx", sheet = "Réponses au formulaire 1", skip =1)
 View(df)
 
-
+ 
 
 
 # Renommer les colonnes
